@@ -7,7 +7,7 @@ public class UserDAO {
 
     public UserDAO() {
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/banking", "root", "your_password");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/banking", "root", "Gv9@K$3rT!e#8zWqP^nL0xV&");
             System.out.println("DataBase Connect successfully!!!");
         } catch (SQLException e) {
             e.printStackTrace();
