@@ -15,18 +15,18 @@ public class UserDAO {
     }
 
     // ✅ Register User
-    public void registerUser(String name, String email, String password) {
-        String query = "INSERT INTO users (name, email, password, balance) VALUES (?, ?, ?, 0.0)";
-        try (PreparedStatement ps = conn.prepareStatement(query)) {
-            ps.setString(1, name);
-            ps.setString(2, email);
-            ps.setString(3, password);
-            ps.executeUpdate();
-            System.out.println("✅ User Registered Successfully!");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+//    public static void registerUser(String name, String email, String password) {
+//        String query = "INSERT INTO users (name, email, password, balance) VALUES (?, ?, ?, 0.0)";
+//        try (PreparedStatement ps = conn.prepareStatement(query)) {
+//            ps.setString(1, name);
+//            ps.setString(2, email);
+//            ps.setString(3, password);
+//            ps.executeUpdate();
+//            System.out.println("✅ User Registered Successfully!");
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     // ✅ Login User
     public static boolean loginUser(String email, String password) {
@@ -45,6 +45,20 @@ public class UserDAO {
             e.printStackTrace();
         }
         return false;
+    }
+
+//    /register
+    public static void registerUser(String name, String email, String password) {
+        String query = "INSERT INTO users (name, email, password, balance) VALUES (?, ?, ?, 0.0)";
+        try (PreparedStatement ps = conn.prepareStatement(query)) {
+            ps.setString(1, name);
+            ps.setString(2, email);
+            ps.setString(3, password);
+            ps.executeUpdate();
+            System.out.println("✅ User Registered Successfully!");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     // ✅ Deposit
