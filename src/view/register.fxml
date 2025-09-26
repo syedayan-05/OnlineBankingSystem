@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="ayan.dev.RegisterController">
+    <children>
+        <VBox alignment="CENTER" spacing="10.0" prefWidth="600" prefHeight="400">
+            <Label text="Register Page" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+            <TextField fx:id="nameField" promptText="Enter Name" />
+            <TextField fx:id="emailField" promptText="Enter Email" />
+            <PasswordField fx:id="passwordField" promptText="Enter Password" />
+            <Button text="Register" onAction="#handleRegister" />
+        </VBox>
+    </children>
+</AnchorPane>
