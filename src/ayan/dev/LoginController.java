@@ -15,12 +15,13 @@ public class LoginController {
         String email = emailField.getText();
         String pass = passwordField.getText();
 
-        if (UserDAO.loginUser(email, pass)) {
+        UserDAO userDAO = new UserDAO();
+        if (userDAO.loginUser(email, pass)) {
             System.out.println("Login Successful ✅");
-            // TODO: Load dashboard.fxml
         } else {
             System.out.println("Invalid Email or Password ❌");
         }
+
     }
 
     public void openRegister(ActionEvent event) {

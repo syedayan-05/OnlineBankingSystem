@@ -3,7 +3,7 @@ package ayan.dev;
 import java.sql.*;
 
 public class UserDAO {
-    private static Connection conn;
+    private Connection conn;
 
     public UserDAO() {
         try {
@@ -29,7 +29,7 @@ public class UserDAO {
 //    }
 
     // ✅ Login User
-    public static boolean loginUser(String email, String password) {
+    public  boolean loginUser(String email, String password) {
         String query = "SELECT * FROM users WHERE email=? AND password=?";
         try (PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setString(1, email);
@@ -48,7 +48,7 @@ public class UserDAO {
     }
 
 //    /register
-    public static void registerUser(String name, String email, String password) {
+    public  void registerUser(String name, String email, String password) {
         String query = "INSERT INTO users (name, email, password, balance) VALUES (?, ?, ?, 0.0)";
         try (PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setString(1, name);

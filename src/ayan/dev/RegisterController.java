@@ -18,7 +18,9 @@ public class RegisterController {
         String email = emailField.getText();
         String password = passwordField.getText();
 
-        UserDAO.registerUser(name, email, password);
+        UserDAO userDAO = new UserDAO();
+        userDAO.registerUser(name, email, password);
+
 
         System.out.println("User Registered Successfully ✅");
     }
