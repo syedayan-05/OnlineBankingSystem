@@ -1,16 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="ayan.dev.RegisterController">
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="ayan.dev.RegisterController"
+            prefWidth="600" prefHeight="400">
+
     <children>
-        <VBox alignment="CENTER" spacing="10.0" prefWidth="600" prefHeight="400">
-            <Label text="Register Page" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
-            <TextField fx:id="nameField" promptText="Enter Name" />
-            <TextField fx:id="emailField" promptText="Enter Email" />
-            <PasswordField fx:id="passwordField" promptText="Enter Password" />
-            <Button text="Register" onAction="#handleRegister" />
+        <VBox alignment="CENTER"
+              spacing="15.0"
+              prefWidth="600"
+              prefHeight="400"
+              AnchorPane.topAnchor="0.0"
+              AnchorPane.bottomAnchor="0.0"
+              AnchorPane.leftAnchor="0.0"
+              AnchorPane.rightAnchor="0.0"
+              style="-fx-background-color: linear-gradient(to bottom right, #4facfe, #00f2fe);">
+
+            <Label text="Register Page"
+                   style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: white;" />
+
+            <TextField fx:id="nameField"
+                       promptText="Enter Name"
+                       style="-fx-pref-width: 250px; -fx-pref-height: 35px; -fx-background-radius: 10;" />
+
+            <TextField fx:id="emailField"
+                       promptText="Enter Email"
+                       style="-fx-pref-width: 250px; -fx-pref-height: 35px; -fx-background-radius: 10;" />
+
+            <PasswordField fx:id="passwordField"
+                           promptText="Enter Password"
+                           style="-fx-pref-width: 250px; -fx-pref-height: 35px; -fx-background-radius: 10;" />
+
+            <Button text="Register"
+                    onAction="#handleRegister"
+                    style="-fx-background-color: #007bff; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 20; -fx-padding: 8 20 8 20;" />
         </VBox>
     </children>
 </AnchorPane>
