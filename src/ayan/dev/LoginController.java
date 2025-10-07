@@ -25,14 +25,14 @@ public class LoginController {
 
             // ✅ Login success hone ke baad dashboard.fxml open karo
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/ayan/dev/view/dashboard.fxml"));
-                Scene scene = new Scene(loader.load(), 800, 600);
+                ayan.dev.SceneSwitcher.switchScene(event, "/ayan/dev/view/dashboard.fxml", "Dashboard - Online Banking System");
+
 
                 // Current stage nikaalo
-                Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-                stage.setScene(scene);
-                stage.setTitle("Dashboard - Online Banking System");
-                stage.show();
+//                Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+//                stage.setScene(scene);
+//                stage.setTitle("Dashboard - Online Banking System");
+//                stage.show();
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -46,13 +46,12 @@ public class LoginController {
     // 🔹 Register button ka action
     public void openRegister(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ayan/dev/view/register.fxml"));
-            Scene scene = new Scene(loader.load(), 600, 400);
+            ayan.dev.SceneSwitcher.switchScene(event, "/ayan/dev/view/register.fxml", "Register - Online Banking");
 
-            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.setTitle("Register - Online Banking System");
-            stage.show();
+//            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+//            stage.setScene(scene);
+//            stage.setTitle("Register - Online Banking System");
+//            stage.show();
 
         } catch (Exception e) {
             e.printStackTrace();

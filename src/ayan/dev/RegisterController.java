@@ -35,15 +35,11 @@ public class RegisterController {
 
         // 🟢 Switch to Dashboard
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ayan/dev/view/dashboard.fxml"));
-            Scene scene = new Scene(loader.load(), 800, 600);
-
-            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.setTitle("Dashboard - Online Banking System");
+            ayan.dev.SceneSwitcher.switchScene(event, "/ayan/dev/view/dashboard.fxml", "Dashboard - Online Banking System");
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 
     // 💬 Reusable alert

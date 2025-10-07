@@ -77,7 +77,7 @@ public class DashboardController {
     @FXML
     public void handleLogout(ActionEvent event) {
         try {
-            SceneSwitcher.switchScene(event, "/ayan/dev/view/login.fxml", "Online Banking - Login");
+            ayan.dev.SceneSwitcher.switchScene(event, "/ayan/dev/view/login.fxml", "Online Banking - Login");
         } catch (Exception e) {
             e.printStackTrace();
         }
