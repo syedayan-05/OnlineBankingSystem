@@ -1,4 +1,4 @@
-package ayan.dev;
+package ayan.dev.utils;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;

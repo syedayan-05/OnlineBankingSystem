@@ -1,10 +1,12 @@
 package ayan.dev;
 
+import ayan.dev.dao.TransactionDAO;
+import ayan.dev.utils.SceneSwitcher;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.Label;
 import java.util.Optional;
 
 public class DashboardController {
@@ -12,83 +14,84 @@ public class DashboardController {
     @FXML
     private Label userNameLabel;
 
-    private String currentUserEmail;
-    private double balance = 0.0; // Temporary — later connect with DB
+    private String userEmail;
 
-    // Ye method LoginController se call hoga user ka naam/email set karne ke liye
-    public void setUserData(String userEmail) {
-        this.currentUserEmail = userEmail;
-        userNameLabel.setText("Welcome, " + userEmail + " 👋");
+    private final TransactionDAO transactionDAO = new TransactionDAO();
+
+    public void setUserEmail(String email) {
+        this.userEmail = email;
+        double balance = transactionDAO.getCurrentBalance(email);
+        userNameLabel.setText("Welcome, " + email + " | Balance: ₹" + balance);
     }
 
     @FXML
-    public void handleDeposit(ActionEvent event) {
+    private void handleDeposit(ActionEvent event) {
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Deposit Money");
-        dialog.setHeaderText("💰 Deposit Funds");
-        dialog.setContentText("Enter amount to deposit:");
-
+        dialog.setHeaderText("Enter amount to deposit:");
         Optional<String> result = dialog.showAndWait();
+
         result.ifPresent(amountStr -> {
             try {
                 double amount = Double.parseDouble(amountStr);
-                if (amount > 0) {
-                    balance += amount;
-                    showAlert("Deposit Successful ✅", "New Balance: ₹" + balance, Alert.AlertType.INFORMATION);
-                } else {
-                    showAlert("Invalid Amount", "Please enter a positive value.", Alert.AlertType.WARNING);
-                }
+                transactionDAO.recordTransaction(userEmail, "deposit", amount);
+                updateBalanceLabel();
+                showAlert("Deposit Successful ✅", "₹" + amount + " added to your account.");
             } catch (NumberFormatException e) {
-                showAlert("Invalid Input", "Please enter a valid number.", Alert.AlertType.ERROR);
+                showAlert("Invalid Input ❌", "Please enter a valid amount.");
             }
         });
     }
 
     @FXML
-    public void handleWithdraw(ActionEvent event) {
+    private void handleWithdraw(ActionEvent event) {
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Withdraw Money");
-        dialog.setHeaderText("💸 Withdraw Funds");
-        dialog.setContentText("Enter amount to withdraw:");
-
+        dialog.setHeaderText("Enter amount to withdraw:");
         Optional<String> result = dialog.showAndWait();
+
         result.ifPresent(amountStr -> {
             try {
                 double amount = Double.parseDouble(amountStr);
-                if (amount > 0 && amount <= balance) {
-                    balance -= amount;
-                    showAlert("Withdraw Successful ✅", "Remaining Balance: ₹" + balance, Alert.AlertType.INFORMATION);
-                } else if (amount > balance) {
-                    showAlert("Insufficient Balance ❌", "You don't have enough funds.", Alert.AlertType.WARNING);
-                } else {
-                    showAlert("Invalid Amount", "Please enter a positive value.", Alert.AlertType.WARNING);
+                double current = transactionDAO.getCurrentBalance(userEmail);
+                if (amount > current) {
+                    showAlert("Insufficient Balance ❌", "You don't have enough balance.");
+                    return;
                 }
+                transactionDAO.recordTransaction(userEmail, "withdraw", amount);
+                updateBalanceLabel();
+                showAlert("Withdrawal Successful ✅", "₹" + amount + " withdrawn successfully.");
             } catch (NumberFormatException e) {
-                showAlert("Invalid Input", "Please enter a valid number.", Alert.AlertType.ERROR);
+                showAlert("Invalid Input ❌", "Please enter a valid amount.");
             }
         });
     }
 
-    @FXML
-    public void handleCheckBalance(ActionEvent event) {
-        showAlert("Current Balance 💳", "Your balance is: ₹" + balance, Alert.AlertType.INFORMATION);
+    private void updateBalanceLabel() {
+        double newBalance = transactionDAO.getCurrentBalance(userEmail);
+        userNameLabel.setText("Welcome, " + userEmail + " | Balance: ₹" + newBalance);
+    }
+
+    private void showAlert(String title, String msg) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(msg);
+        alert.showAndWait();
     }
 
     @FXML
-    public void handleLogout(ActionEvent event) {
+    private void handleCheckBalance(ActionEvent event) {
+        double balance = transactionDAO.getCurrentBalance(userEmail);
+        showAlert("Your Current Balance", "₹" + balance);
+    }
+
+    @FXML
+    private void handleLogout(ActionEvent event) {
         try {
-            ayan.dev.SceneSwitcher.switchScene(event, "/ayan/dev/view/login.fxml", "Online Banking - Login");
+            SceneSwitcher.switchScene(event, "/ayan/dev/view/login.fxml", "Login - Online Banking");
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    // Common method for alerts
-    private void showAlert(String title, String message, Alert.AlertType type) {
-        Alert alert = new Alert(type);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
     }
 }
