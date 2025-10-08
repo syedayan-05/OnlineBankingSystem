@@ -15,8 +15,12 @@
               AnchorPane.bottomAnchor="0.0"
               AnchorPane.leftAnchor="0.0"
               AnchorPane.rightAnchor="0.0"
-              style="-fx-background-color: linear-gradient(to bottom right, #667eea, #764ba2);"
-              padding="20">
+              style="-fx-background-color: linear-gradient(to bottom right, #667eea, #764ba2);">
+
+            <!-- ✅ Correct padding -->
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20" />
+            </padding>
 
             <Label text="🏦 Welcome to Online Banking System 🏦"
                    style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: white;" />
