@@ -1,16 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="ayan.dev.LoginController">
+<!-- ✅ Ye FXML header language specify karega -->
+<?language XML?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.171"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ayan.dev.LoginController"
+            prefWidth="600" prefHeight="400"
+            style="-fx-background-color: linear-gradient(to bottom right, #f0f2f5, #d9e4ec);">
+
     <children>
-        <VBox alignment="CENTER" spacing="10.0" prefWidth="600" prefHeight="400">
-            <Label text="Login Page" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
-            <TextField fx:id="emailField" promptText="Enter Email" />
-            <PasswordField fx:id="passwordField" promptText="Enter Password" />
-            <Button text="Login" onAction="#handleLogin" />
-            <Hyperlink text="New user? Register here" onAction="#openRegister" />
+        <VBox alignment="CENTER" spacing="15"
+              AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+              AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+
+            <Label text="🏦 Online Banking System"
+                   style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #333;" />
+
+            <VBox alignment="CENTER_LEFT" spacing="10"
+                  style="-fx-background-color: white; -fx-padding: 30; -fx-border-radius: 10; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 10, 0, 0, 3);">
+
+                <Label text="Email" style="-fx-font-size: 14px; -fx-text-fill: #555;" />
+                <TextField fx:id="emailField" promptText="Enter your email"
+                           style="-fx-pref-width: 300; -fx-padding: 8; -fx-background-radius: 5;"/>
+
+                <Label text="Password" style="-fx-font-size: 14px; -fx-text-fill: #555;" />
+                <PasswordField fx:id="passwordField" promptText="Enter your password"
+                               style="-fx-pref-width: 300; -fx-padding: 8; -fx-background-radius: 5;"/>
+
+                <Button text="Login"
+                        onAction="#handleLogin"
+                        style="-fx-background-color: #0078D7; -fx-text-fill: white; -fx-font-size: 14px; -fx-pref-width: 300; -fx-background-radius: 5;"
+                        onMouseEntered="this.style='-fx-background-color: #005fa3; -fx-text-fill: white; -fx-font-size: 14px; -fx-pref-width: 300; -fx-background-radius: 5;'"
+                        onMouseExited="this.style='-fx-background-color: #0078D7; -fx-text-fill: white; -fx-font-size: 14px; -fx-pref-width: 300; -fx-background-radius: 5;'"/>
+
+                <Button text="Create New Account"
+                        onAction="#openRegister"
+                        style="-fx-background-color: transparent; -fx-text-fill: #0078D7; -fx-font-size: 13px; -fx-underline: true;"/>
+            </VBox>
         </VBox>
     </children>
 </AnchorPane>

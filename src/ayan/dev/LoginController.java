@@ -6,11 +6,26 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class LoginController {
+
+    @FXML
+    private Button loginButton;
+    @FXML
+    public void initialize() {
+        // Hover effect for login button
+        loginButton.setOnMouseEntered(e ->
+                loginButton.setStyle("-fx-background-color: #005fa3; -fx-text-fill: white; -fx-font-size: 14px; -fx-pref-width: 300; -fx-background-radius: 5;")
+        );
+
+        loginButton.setOnMouseExited(e ->
+                loginButton.setStyle("-fx-background-color: #0078D7; -fx-text-fill: white; -fx-font-size: 14px; -fx-pref-width: 300; -fx-background-radius: 5;")
+        );
+    }
 
     @FXML
     private TextField emailField;
