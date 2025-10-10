@@ -35,7 +35,7 @@ public class RegisterController {
 
         // 🟢 Switch to Dashboard
         try {
-            ayan.dev.SceneSwitcher.switchScene(event, "/ayan/dev/view/dashboard.fxml", "Dashboard - Online Banking System");
+            ayan.dev.utils.SceneSwitcher.switchScene(event, "/ayan/dev/view/dashboard.fxml", "Dashboard - Online Banking System");
         } catch (Exception e) {
             e.printStackTrace();
         }

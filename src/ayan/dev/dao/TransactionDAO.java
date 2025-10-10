@@ -1,7 +1,7 @@
 package ayan.dev.dao;
 
 import java.sql.*;
-import ayan.dev.utils.DBConnection;
+import ayan.dev.DBConnection;
 
 public class TransactionDAO {
 
