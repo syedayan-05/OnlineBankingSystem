@@ -31,11 +31,11 @@
                 <PasswordField fx:id="passwordField" promptText="Enter your password"
                                style="-fx-pref-width: 300; -fx-padding: 8; -fx-background-radius: 5;"/>
 
-                <Button text="Login"
+                <Button fx:id="loginButton"
+                        text="Login"
                         onAction="#handleLogin"
-                        style="-fx-background-color: #0078D7; -fx-text-fill: white; -fx-font-size: 14px; -fx-pref-width: 300; -fx-background-radius: 5;"
-                        onMouseEntered="this.style='-fx-background-color: #005fa3; -fx-text-fill: white; -fx-font-size: 14px; -fx-pref-width: 300; -fx-background-radius: 5;'"
-                        onMouseExited="this.style='-fx-background-color: #0078D7; -fx-text-fill: white; -fx-font-size: 14px; -fx-pref-width: 300; -fx-background-radius: 5;'"/>
+                        style="-fx-background-color: #0078D7; -fx-text-fill: white; -fx-font-size: 14px; -fx-pref-width: 300; -fx-background-radius: 5;"/>
+
 
                 <Button text="Create New Account"
                         onAction="#openRegister"
